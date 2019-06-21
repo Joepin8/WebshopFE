@@ -1,0 +1,13 @@
+
+<div>
+  <form name="loginForm" #loginForm="ngForm" (ngSubmit)="login()">
+    <h3>LOGIN:</h3>
+    <div>
+      <input name="email" type="email" placeholder="Email" [(ngModel)]="user.email" #email="ngModel">
+    </div>
+    <div class="form-full-width">
+      <input name="password" type="password" placeholder="Password" [(ngModel)]="user.wachtwoord" #wachtwoord="ngModel">
+    </div>
+    <button  color="primary" type="submit" class="btn-login">LOGIN</button>
+  </form>
+</div>

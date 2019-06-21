@@ -1,0 +1,22 @@
+/* @import url('https://fonts.googleapis.com/css?family=Ubuntu'); */
+@import url('https://fonts.googleapis.com/earlyaccess/notosanskannada.css');
+
+.form-full-width {
+  width: 100%;
+}
+
+h2 {
+  font-family: 'Noto Sans Kannada', sans-serif;
+  text-align: left
+}
+
+.btn-login {
+  float: right;
+}
+
+.paper-card {
+  min-width: 25%;
+  max-width: 100%;
+  padding-bottom: 50px;
+
+}

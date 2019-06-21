@@ -2,12 +2,14 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {environment} from '../../environments/environment';
+import {AuthorizationService} from './authorization.service';
 
-// import {AuthorizationService} from './authorization.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ApiService {
-  constructor(private http: HttpClient/*, private authService: AuthorizationService*/) {
+  constructor(private http: HttpClient, private authService: AuthorizationService) {
 
   }
 
@@ -33,11 +35,11 @@ export class ApiService {
   }
 
   private createRequestHeaders(): HttpHeaders {
-    const headers = new HttpHeaders();
+    let headers = new HttpHeaders();
 
-/*    if (this.authService.hasAuthorization()) {
+    if (this.authService.hasAuthorization()) {
       headers = headers.set('Authorization', this.authService.createAuthorizationString());
-    }*/
+    }
 
     return headers;
   }
