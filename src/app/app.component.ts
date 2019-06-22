@@ -2,6 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {AuthorizationService} from './services/authorization.service';
 import {Router} from '@angular/router';
 import {User} from './models/user.model';
+import {MatSidenav} from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ import {User} from './models/user.model';
 export class AppComponent {
   title = 'angular';
 
-  // @ViewChild('sidenav') sidenav: MatSidenav;
+  @ViewChild('sidenav', {static: false}) sidenav: MatSidenav;
 
   authenticated = false;
   authenticator: User = null;
@@ -29,5 +30,21 @@ export class AppComponent {
         this.authenticated = auth;
       }
     );
+  }
+  close() {
+    this.sidenav.close();
+  }
+
+  open() {
+    this.sidenav.open();
+  }
+
+  logout() {
+    this.authService.deleteAuthorization();
+    this.router.navigate(['']);
+  }
+
+  login() {
+    this.router.navigate(['login']);
   }
 }

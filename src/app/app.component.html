@@ -1,10 +1,29 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-</div>
+<mat-menu #rootMenu="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="subMenu">Power</button>
+  <button mat-menu-item>System settings</button>
+  <button *ngIf="authenticated" mat-icon-button (click)="logout()"><mat-icon>exit_to_app</mat-icon></button>
+  <button *ngIf="!authenticated" mat-icon-button (click)="login()"><mat-icon>power_settings_new</mat-icon></button>
+</mat-menu>
 
+<mat-menu #subMenu="matMenu">
+  <button mat-menu-item>Shut down</button>
+  <button mat-menu-item>Restart</button>
+  <button mat-menu-item>Hibernate</button>
+</mat-menu>
 
+<button mat-icon-button [matMenuTriggerFor]="rootMenu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+<!--    <p>-->
+<!--      <button mat-button class="sidenav-button" (click)="close()" routerLink="/login">Login</button>-->
+<!--&lt;!&ndash;      <button mat-button class="sidenav-button" (click)="close()" routerLink="/timesheet">Uren overzicht</button>&ndash;&gt;-->
+<!--&lt;!&ndash;      <button mat-button class="sidenav-button" (click)="close()" routerLink="/projects">Projecten beheren</button>&ndash;&gt;-->
+<!--&lt;!&ndash;      <button mat-button class="sidenav-button" (click)="close()" routerLink="/admin/employees">Werknemers beheren</button>&ndash;&gt;-->
+<!--    </p>-->
 
+<!--          <button *ngIf="authenticated" mat-icon-button (click)="goToTimesheet()"><mat-icon>timeline</mat-icon></button>-->
+<!--          <button *ngIf="authenticated" mat-icon-button (click)="goToProjects()"><mat-icon>work</mat-icon></button>-->
+<!--          <button *ngIf="authenticated" mat-icon-button (click)="logout()"><mat-icon>exit_to_app</mat-icon></button>-->
+<!--          <button *ngIf="!authenticated" mat-icon-button (click)="login()"><mat-icon>power_settings_new</mat-icon></button>-->
 <router-outlet></router-outlet>
+

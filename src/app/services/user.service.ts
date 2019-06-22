@@ -7,6 +7,7 @@ import {ApiService} from './api.service';
 import {AuthorizationService} from './authorization.service';
 
 import {User} from '../models/user.model';
+import {AuthComponent} from '../components/auth/auth.component';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +27,7 @@ export class UserService {
   public register(user: User): void {
     this.api.post<void>('user', user).subscribe(
       ifSuccess => {
-        this.goBack();
+        confirm('Gefeliciteerd, het registreren is voltooid!');
       },
       error => {
         alert('Het registreren is mislukt ' + user.naam);
@@ -62,9 +63,9 @@ export class UserService {
     this.router.navigate(['/login']);
   }
 
-  private goBack() {
-    this.router.navigate(['admin/users']);
-  }
+  // private goBack() {
+  //   this.router.navigate(['/login']);
+  // }
 
   public save(user: User) {
     this.api.put('user/' + user.user_id, user).subscribe(

@@ -1,13 +1,76 @@
-
-<div>
-  <form name="loginForm" #loginForm="ngForm" (ngSubmit)="login()">
-    <h3>LOGIN:</h3>
-    <div>
-      <input name="email" type="email" placeholder="Email" [(ngModel)]="user.email" #email="ngModel">
-    </div>
-    <div class="form-full-width">
-      <input name="password" type="password" placeholder="Password" [(ngModel)]="user.wachtwoord" #wachtwoord="ngModel">
-    </div>
-    <button  color="primary" type="submit" class="btn-login">LOGIN</button>
-  </form>
+<div class = "content">
+  <div *ngIf="!this.showRegister">
+    <mat-card class="paper-card mat-elevation-z8">
+      <mat-toolbar>
+        <span>LOGIN</span>
+      </mat-toolbar>
+      <mat-card-content>
+        <form class="flex-block" #loginform="ngForm">
+          <mat-form-field class="full-width">
+            <mat-label>Email</mat-label>
+            <input  matInput pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" placeholder="Email" name="email" [(ngModel)]="user.email">
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Password</mat-label>
+            <input  matInput type="password"  placeholder="Password" name="password" [(ngModel)]="user.wachtwoord">
+          </mat-form-field>
+        </form>
+        <div class="flexbuttons">
+        <mat-card-actions>
+          <button mat-raised-button class="loginbtn" [disabled]="!loginform.valid" (click)="login()" color="primary">LOGIN</button>
+        </mat-card-actions>
+        <mat-card-actions>
+          <button mat-raised-button class="registerbtn" (click)="setShowRegister()" color="primary">REGISTREER</button>
+        </mat-card-actions>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div *ngIf="this.showRegister">
+    <mat-card class="paper-card mat-elevation-z8" >
+      <mat-toolbar>
+        <span>Registreer</span>
+      </mat-toolbar>
+      <mat-card-content *ngIf="this.showRegister">
+        <form class="flex-block" #RegisterForm="ngForm">
+          <mat-form-field class="full-width">
+            <mat-label>First Name</mat-label>
+            <input  matInput  placeholder="Voornaam"  name="fname" [(ngModel)]="user.voornaam"  required>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Last Name</mat-label>
+            <input  matInput  placeholder="Achternaam" name="lname" [(ngModel)]="user.naam" required>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Postcode</mat-label>
+            <input  matInput pattern="[0-9]{4}[a-zA-Z]{2}"  placeholder="Postcode" name="postcode" [(ngModel)]="user.postcode" required>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Huisnummer</mat-label>
+            <input  matInput type="number" placeholder="bijv. '1'" name="huisnummer" [(ngModel)]="user.huisnummer" required>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Toevoeging</mat-label>
+            <input  matInput  placeholder="Toevoeging" name="toevoeging" [(ngModel)]="user.toevoeging">
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Email</mat-label>
+            <input  matInput pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"  placeholder="Email" name="email" [(ngModel)]="user.email" required>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>Password</mat-label>
+            <input  matInput type="password" minlength="8" placeholder="Minimaal 8 tekens"  name="password" [(ngModel)]="user.wachtwoord"  required>
+          </mat-form-field>
+        </form>
+        <div class="flexbuttons">
+          <mat-card-actions>
+            <button mat-raised-button [disabled]="!RegisterForm.valid" (click)="register()" color="primary">Registreer</button>
+          </mat-card-actions>
+          <mat-card-actions>
+            <button mat-raised-button (click)="setShowRegister()" color="primary">Naar inloggen</button>
+          </mat-card-actions>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>
