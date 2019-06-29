@@ -8,7 +8,7 @@ import {User} from '../models/user.model';
 export class AuthorizationService {
   private login: string = null;
   private password: string = null;
-  private authenticator: User = null;
+  private authenticator: User = new User();
 
   private authenticator$ = new Subject<User>();
   public authorized$ = new Subject<boolean>();
@@ -59,7 +59,7 @@ export class AuthorizationService {
       const authorization = JSON.parse(authorizationString);
 
       this.login = authorization['login'];
-      this.password = authorization['wachtwoord'];
+      this.password = authorization['password'];
       this.authenticator = authorization['authenticator'];
 
       this.authorized$.next(true);

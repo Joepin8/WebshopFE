@@ -1,19 +1,29 @@
-<mat-menu #rootMenu="matMenu">
-  <button mat-menu-item [matMenuTriggerFor]="subMenu">Power</button>
-  <button mat-menu-item>System settings</button>
-  <button *ngIf="authenticated" mat-icon-button (click)="logout()"><mat-icon>exit_to_app</mat-icon></button>
-  <button *ngIf="!authenticated" mat-icon-button (click)="login()"><mat-icon>power_settings_new</mat-icon></button>
-</mat-menu>
+<mat-card>
+  <div class="flex">
+    <div class="cat">
+      <button mat-button >1e knop</button>
+      <button mat-button >2e knop</button>
+      <button mat-button >3e knop</button>
+    </div>
+    <div>
 
-<mat-menu #subMenu="matMenu">
-  <button mat-menu-item>Shut down</button>
-  <button mat-menu-item>Restart</button>
-  <button mat-menu-item>Hibernate</button>
-</mat-menu>
+    </div>
+    <div class="loginbox">
+      <button *ngIf="authenticated" mat-icon-button (click)="logout()"><mat-icon>exit_to_app</mat-icon></button>
+      <button *ngIf="!authenticated" mat-icon-button (click)="login()"><mat-icon>power_settings_new</mat-icon></button>
+    </div>
+  </div>
+</mat-card>
 
-<button mat-icon-button [matMenuTriggerFor]="rootMenu">
-  <mat-icon>more_vert</mat-icon>
-</button>
+<!--<mat-menu #subMenu="matMenu">-->
+<!--  <button mat-menu-item>Shut down</button>-->
+<!--  <button mat-menu-item>Restart</button>-->
+<!--  <button mat-menu-item>Hibernate</button>-->
+<!--</mat-menu>-->
+
+<!--<button mat-icon-button [matMenuTriggerFor]="rootMenu">-->
+<!--  <mat-icon>more_vert</mat-icon>-->
+<!--</button>-->
 <!--    <p>-->
 <!--      <button mat-button class="sidenav-button" (click)="close()" routerLink="/login">Login</button>-->
 <!--&lt;!&ndash;      <button mat-button class="sidenav-button" (click)="close()" routerLink="/timesheet">Uren overzicht</button>&ndash;&gt;-->

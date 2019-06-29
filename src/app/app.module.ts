@@ -10,6 +10,7 @@ import {FormsModule} from '@angular/forms';
 import {AuthComponent} from './components/auth/auth.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
+import { ProductComponent } from './components/product/product.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {MaterialModule} from './material.module';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    AuthComponent
+    AuthComponent,
+    ProductComponent
   ],
   imports: [
     MaterialModule,

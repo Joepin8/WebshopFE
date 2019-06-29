@@ -7,7 +7,6 @@ import {ApiService} from './api.service';
 import {AuthorizationService} from './authorization.service';
 
 import {User} from '../models/user.model';
-import {AuthComponent} from '../components/auth/auth.component';
 
 @Injectable({
   providedIn: 'root',
@@ -20,8 +19,8 @@ export class UserService {
 
   }
 
-  public getAll(): Observable<User[]> {
-    return this.api.get<User[]>('user');
+  public getAll(id: number): Observable<User> {
+    return this.api.get<User>('user/' + id);
   }
 
   public register(user: User): void {

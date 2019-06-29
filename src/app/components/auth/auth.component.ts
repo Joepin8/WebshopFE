@@ -24,7 +24,6 @@ export class AuthComponent implements OnInit {
     this.userService.login(this.user, false);
   }
   public register() {
-    this.user.rol = 'GUEST';
     this.userService.register(this.user);
     this.user = new User();
 

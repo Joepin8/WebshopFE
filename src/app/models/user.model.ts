@@ -9,6 +9,6 @@ export class User {
     public toevoeging?: string,
     public email?: string,
     public wachtwoord?: string,
-    public rol?: string,
+    public rol: string = 'GUEST',
   ) { }
 }
