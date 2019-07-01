@@ -1,9 +1,18 @@
 <mat-card>
-  <div>
-    <div *ngFor="let product of products$">
-      <p>het product heet {{product.naam}} en heeft als omschrijving: {{product.omschrijving}}</p>
-
-    </div>
-    <p>gebruiker heet {{user.naam}} en postcode: {{user.postcode  }}</p>
-  </div>
+  <mat-card-content>
+    <a style="cursor: pointer;"
+    (click)="toDetails()">
+      <div id="foto">
+        <img [src]="product.imgUrl" alt="product foto">
+      </div>
+      <div id="info">
+        <h2>
+        {{product.naam}}
+        </h2>
+        <h3>
+          &euro;{{product.prijs}}<span style="white-space: nowrap;" *ngIf="product.prijs % 1 === 0">.-</span>
+        </h3>
+      </div>
+    </a>
+  </mat-card-content>
 </mat-card>

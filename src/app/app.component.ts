@@ -41,7 +41,7 @@ export class AppComponent {
 
   logout() {
     this.authService.deleteAuthorization();
-    this.router.navigate(['']);
+    this.router.navigate(['shop']);
   }
 
   login() {

@@ -1,0 +1,19 @@
+.mat-card {
+  /*display: inline-block;*/
+
+  height: 100%;
+  padding: 20px;
+
+}
+#foto img {
+  max-width: 100%;
+  height: auto;
+
+}
+#info{
+  text-align: center;
+  position:absolute;
+  bottom: 0;
+  margin: 0 0 0 -20px;
+  width: 100%;
+}

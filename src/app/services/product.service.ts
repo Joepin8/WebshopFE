@@ -10,32 +10,25 @@ import {Product} from '../models/product.model';
 })
 export class ProductService {
 
+  products$: Observable<Product[]>;
+
   constructor(private api: ApiService,
               private authService: AuthorizationService,
               private router: Router) {
-
+    this.products$  = this.api.get<Product[]>('products');
   }
 
   public getAll(): Observable<Product[]> {
-    return this.api.get<Product[]>('products');
+    return this.products$;
   }
-
-
-
-  public save(product: Product) {
-    this.api.put('products/' + product.productId, this.authService.authorized$).subscribe(
-      res => {
-        console.log('Saved: ' + product.naam);
-      },
-      err => {
-        console.log('Product not saved.');
-      }
-    );
+  public getProduct(id: number): Observable<Product> {
+    console.log('hij doet dit...');
+    return this.api.get<Product>('products/' + id);
   }
 
   public saveMultiple(products: Product[]) {
     products.forEach(item => {
-      this.api.put('user/' + item.productId, item).subscribe(
+      this.api.put('products/' + item.productId, item, this.authService.authorized$).subscribe(
         ifSuccess => {
 
         },

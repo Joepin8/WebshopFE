@@ -55,7 +55,7 @@ export class UserService {
   }
 
   private goToStore() {
-    this.router.navigate(['/']);
+    this.router.navigate(['shop']);
   }
 
   private goToLogin() {

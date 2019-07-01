@@ -1,3 +1,7 @@
-<p>
-  <app-product></app-product>
-</p>
+<div id="main">
+  <div id="flex-container" >
+    <div *ngFor="let product of products$" id="flex-item">
+      <app-product [product]=product [index]="product.productId"></app-product>
+    </div>
+  </div>
+</div>

@@ -11,6 +11,7 @@ import {AuthComponent} from './components/auth/auth.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
 import { ProductComponent } from './components/product/product.component';
+import { ProductOmschrijvingComponent } from './components/product-omschrijving/product-omschrijving.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ProductComponent } from './components/product/product.component';
     LoginComponent,
     HomeComponent,
     AuthComponent,
-    ProductComponent
+    ProductComponent,
+    ProductOmschrijvingComponent
   ],
   imports: [
     MaterialModule,

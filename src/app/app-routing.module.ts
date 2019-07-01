@@ -4,15 +4,19 @@ import {LoginComponent} from './components/login/login.component';
 import {HomeComponent} from './components/home/home.component';
 import {AuthComponent} from './components/auth/auth.component';
 import {AuthGuardService} from './services/auth-guard.service';
+import {ProductOmschrijvingComponent} from './components/product-omschrijving/product-omschrijving.component';
 
 export const routes: Routes = [
 
-  { path: '', component: HomeComponent },
-  { path: 'login', component: AuthComponent/*, canActivate: [AuthGuardService]*/ },
+  { path: 'shop', component: HomeComponent},
+  {path: 'products/:id', component: ProductOmschrijvingComponent},
+  { path: 'login', component: AuthComponent/*, canActivate: [AuthGuardService]*/} ,
+
+
   // { path: 'register', component: RegisterComponent },
 
   // otherwise redirect to home
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'shop' }
   ];
 
 @NgModule({

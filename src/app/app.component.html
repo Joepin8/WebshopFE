@@ -1,20 +1,29 @@
-<mat-card>
-  <div class="flex">
-    <div class="cat">
-      <button mat-button >1e knop</button>
-      <button mat-button >2e knop</button>
-      <button mat-button >3e knop</button>
-    </div>
-    <div>
+<div id="container">
+  <mat-card id="menubalk">
+    <div class="flex">
+      <div class="cat">
+        <button mat-button>1e knop</button>
+        <button mat-button>2e knop</button>
+        <button mat-button>3e knop</button>
+      </div>
+      <div>
 
+      </div>
+      <div class="loginbox">
+        <button *ngIf="authenticated" mat-icon-button (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
+        <button *ngIf="!authenticated" mat-icon-button (click)="login()">
+          <mat-icon>power_settings_new</mat-icon>
+        </button>
+      </div>
     </div>
-    <div class="loginbox">
-      <button *ngIf="authenticated" mat-icon-button (click)="logout()"><mat-icon>exit_to_app</mat-icon></button>
-      <button *ngIf="!authenticated" mat-icon-button (click)="login()"><mat-icon>power_settings_new</mat-icon></button>
-    </div>
+  </mat-card>
+
+  <div id="router">
+    <router-outlet></router-outlet>
   </div>
-</mat-card>
-
+</div>
 <!--<mat-menu #subMenu="matMenu">-->
 <!--  <button mat-menu-item>Shut down</button>-->
 <!--  <button mat-menu-item>Restart</button>-->
@@ -35,5 +44,5 @@
 <!--          <button *ngIf="authenticated" mat-icon-button (click)="goToProjects()"><mat-icon>work</mat-icon></button>-->
 <!--          <button *ngIf="authenticated" mat-icon-button (click)="logout()"><mat-icon>exit_to_app</mat-icon></button>-->
 <!--          <button *ngIf="!authenticated" mat-icon-button (click)="login()"><mat-icon>power_settings_new</mat-icon></button>-->
-<router-outlet></router-outlet>
+
 
