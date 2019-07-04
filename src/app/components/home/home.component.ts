@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Product} from '../../models/product.model';
 import {Subscription} from 'rxjs';
 import {ProductService} from '../../services/product.service';
+import {CartService} from '../../services/cart.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,8 @@ export class HomeComponent implements OnInit {
   products$: Product[];
   sub: Subscription;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService,
+              private cartService: CartService) { }
 
   ngOnInit() {
     this.sub = this.productService.getAll().subscribe(data => {

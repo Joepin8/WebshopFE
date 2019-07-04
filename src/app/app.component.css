@@ -27,8 +27,16 @@
 #container{
   background: url('../assets/background.jpg') no-repeat center center fixed;
   background-size: cover;
+  height: 100%;
+  overflow: scroll;
 }
 #router{
   /*max-width: 80vw;*/
+
   padding: 30px 18vw;
+}
+@media (max-width : 400px) {
+  #router{
+    padding: 10px 4vw;
+  }
 }

@@ -22,7 +22,6 @@ export class ProductService {
     return this.products$;
   }
   public getProduct(id: number): Observable<Product> {
-    console.log('hij doet dit...');
     return this.api.get<Product>('products/' + id);
   }
 

@@ -10,5 +10,6 @@ export class User {
     public email?: string,
     public wachtwoord?: string,
     public rol: string = 'GUEST',
+    public extra?: string,
   ) { }
 }

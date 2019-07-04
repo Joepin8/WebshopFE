@@ -1,0 +1,30 @@
+<div id="main">
+  <div id="align">
+    <button mat-raised-button id="backbtn" routerLink="shop" color="primary">Terug</button>
+    <mat-card id="paper-card" class="mat-elevation-z8" *ngIf="ready">
+      <div id="top">
+        <mat-card class="mat-elevation-z5" id="topleft">
+          <img [src]="product.imgUrl" alt="product foto">
+        </mat-card>
+        <div id="topright">
+          <mat-card-title>{{product.naam}}</mat-card-title>
+          <br/>
+          <div id="toevoeg">
+            <h3>
+              &euro;{{product.prijs}}<span style="white-space: nowrap;" *ngIf="product.prijs % 1 === 0">.-</span>
+            </h3>
+            <button mat-raised-button id="koopbtn" (click)="koop()" color="orange">+IN WINKELWAGEN</button>
+          </div>
+        </div>
+      </div>
+      <div id="bottom">
+        <mat-card-title>
+          Omschrijving
+        </mat-card-title>
+        <mat-card-content>
+          {{product.omschrijving}}
+        </mat-card-content>
+      </div>
+    </mat-card>
+  </div>
+</div>

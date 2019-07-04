@@ -1,0 +1,16 @@
+<div id="main">
+  <div id="align">
+    <button mat-raised-button id="backbtn" routerLink="shop" color="primary">Terug</button>
+    <mat-card id="paper-card" class="mat-elevation-z8">
+      <div *ngIf="cartItems.length > 0">
+        <mat-divider></mat-divider>
+        <mat-list *ngFor="let item of cartItems">
+          <mat-list-item>
+            {{item.naam}}
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </mat-list>
+      </div>
+    </mat-card>
+  </div>
+</div>

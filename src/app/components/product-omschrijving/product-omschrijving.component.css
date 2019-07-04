@@ -1,0 +1,73 @@
+#paper-card{
+  height: 70vh;
+  width: 100%;
+  box-sizing: border-box;
+  position:absolute;
+  padding: 2%;
+  display:flex;
+  flex-direction: column;
+  align-content: stretch;
+  overflow: auto;
+  /*display: block;*/
+  /*width: 100%;*/
+  /*height: 60vh;*/
+  /*margin: 0 auto;*/
+}
+#main{
+  margin: 30px auto;
+  display: block;
+  width: 70%;
+  /*height: 100vh;*/
+
+}
+#align{
+  position:relative;
+}
+.mat-raised-button{
+  height: 10%;
+  margin: 1% 0;
+}
+#backbtn+ #paper-card{
+  /*text-align: center;*/
+  float: left;
+  margin: 0 auto;
+
+}
+#top{
+  height: 100%;
+  width: 100%;
+  padding: 0 0 5% 0 ;
+  display:flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+#topleft {
+  /*display: inline-block;*/
+  max-width: 50%;
+  /*height: auto;*/
+  margin: 0;
+  padding: 1%;
+}
+  #topleft img{
+    height: 100%;
+    width: 100%;
+  }
+#topright{
+  text-align: center;
+  flex-grow: 1;
+  /*display: inline-block;*/
+  margin: 10% 0;
+  width: 50%;
+  height: 100%;
+}
+#bottom{
+  margin: 6% 2% 0 2%;
+  height: 90%;
+  flex-grow: 1;
+}
+#toevoeg{
+
+}
+#koopbtn{
+
+}

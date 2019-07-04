@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
 import { ProductComponent } from './components/product/product.component';
 import { ProductOmschrijvingComponent } from './components/product-omschrijving/product-omschrijving.component';
+import {KonamiModule} from 'ngx-konami';
+import { CartComponent } from './components/cart/cart.component';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { ProductOmschrijvingComponent } from './components/product-omschrijving/
     HomeComponent,
     AuthComponent,
     ProductComponent,
-    ProductOmschrijvingComponent
+    ProductOmschrijvingComponent,
+    CartComponent
   ],
   imports: [
     MaterialModule,
@@ -29,7 +32,8 @@ import { ProductOmschrijvingComponent } from './components/product-omschrijving/
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    KonamiModule
   ],
   providers: [],
   bootstrap: [AppComponent]

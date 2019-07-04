@@ -17,7 +17,8 @@ export class AppComponent {
   authenticated = false;
   authenticator: User = null;
 
-  constructor(private authService: AuthorizationService, private router: Router) {
+  constructor(private authService: AuthorizationService,
+              private router: Router) {
     this.authenticated = authService.hasAuthorization();
     authService.authorized$.subscribe(
       authorized => {
