@@ -48,4 +48,7 @@ export class AppComponent {
   login() {
     this.router.navigate(['login']);
   }
+  geenTijd() {
+    alert('geen tijd meer om een pagina te maken waar je persoonsgegevens kan aanpassen');
+  }
 }

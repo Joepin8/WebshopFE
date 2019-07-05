@@ -1,0 +1,46 @@
+#listbox{
+  margin: 5% 7%;
+}
+::ng-deep #list{
+  width: 100%;
+  margin: auto;
+}
+::ng-deep .mat-list-item-content{
+
+  height: 2em;
+  margin: 5px 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+}
+#infoflex{
+  display:flex;
+  justify-content: space-between;
+}
+#totaal{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 30vh;
+  width: 30%;
+  margin: auto;
+}
+#totaalflex{
+  margin: auto;
+}
+#gegevens{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+  min-width: auto;
+  margin: auto;
+  align-items: center;
+}
+#backbtn{
+}
+.mat-raised-button{
+  height: 10%;
+  margin: 1% 0;
+}

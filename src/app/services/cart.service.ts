@@ -22,43 +22,46 @@ export class CartService {
               private authService: AuthorizationService,
               private productService: ProductService,
               private router: Router) {
-    this.api.get<Cart[]>('cart/' + this.authService.getAuthenticator().user_id, this.authService.authorized$)
-      .subscribe(items => {
-        this.storedCartItems = items;
-        items.forEach(item => {
-          this.productService.getProduct(item.productId).subscribe(product => {
-            for (let i = 0; i < item.aantal; i++) {
-              this.cartItems.push(product);
-            }
-          }, error => {
-            alert('geen opgeslagen producten');
-          });
+    if (this.authService.hasAuthorization()) {
+      this.api.get<Cart[]>('cart/' + this.authService.getAuthenticator().user_id, this.authService.authorized$)
+        .subscribe(items => {
+          this.storedCartItems = items;
         });
-      });
+    }
   }
 
-  // private fillCart(Product product) {
-  //   // sessionStorage.setItem('1', JSON.stringify(parsedResult.product));
-  //
-  // }
   public getCarts(): Cart[] {
     return this.storedCartItems;
   }
-  public getCart(): Product[] {
-    console.log('de cartitems in cartservice: ' + this.cartItems);
-    return this.cartItems;
-  }
+
   public addToCarts(product: Product) {
     if (!this.alreadyInCart(product.productId)) {
-      this.storedCartItems.push(new Cart(null,
-        this.authService.getAuthenticator().user_id, product.productId, 1));
+        this.storedCartItems.push(new Cart(null, null,
+          product.productId, 1));
+        if (this.authService.hasAuthorization()) {
+          this.save(new Cart(null, this.authService.getAuthenticator().user_id,
+            product.productId, 1));
+        }
+    } else {
+      alert('Dit product zit al in de winkelwagen');
     }
   }
-  public addToCart(product: Product) {
-    // const currentValue = this.cartItem$.value;
-    // const updatedValue = [...currentValue, product];
-    this.cartItems.push(product);
+
+  public deleteFromCarts(productId: number) {
+    if (this.authService.hasAuthorization()) {
+      this.delete(productId, this.authService.getAuthenticator().user_id);
+    }
+    this.storedCartItems.forEach((cartItem, index) => {
+      if (cartItem.productId === productId) {
+        this.storedCartItems.splice(index, 1);
+      }
+    });
   }
+
+  public updateCarts(productId: number) {
+
+  }
+
   private alreadyInCart(productId: number): boolean {
     let inCart = false;
     this.storedCartItems.forEach(cartItem => {
@@ -68,16 +71,24 @@ export class CartService {
     });
     return inCart;
   }
-  public saveMultiple(cartItems: Cart[]) {
-    cartItems.forEach(item => {
-      this.api.put('cart/' + item.cartId, item, this.authService.authorized$).subscribe(
-        ifSuccess => {
-          confirm('item is in de cart gezet!!');
-        },
-        error => {
-          alert('Could not put to server: ' + error.message);
-        }
-      );
-    });
+
+  public delete(productId: number, userId: number) {
+    this.api.delete('cart/' + userId + '&' + productId, this.authService.authorized$).subscribe(
+      ifSuccess => {
+        alert('Het item is verwijderd uit de database');
+      },
+      error => {
+        alert('Het verwijderen is mislukt')  ;
+      });
   }
+  public save(cartItem: Cart) {
+    this.api.post('cart/', cartItem, this.authService.authorized$).subscribe(
+      ifSuccess => {
+        alert('item is in de cart-database gezet!!');
+      },
+      error => {
+        alert('Could not put to server: ' + error.message);
+      });
+  }
+
 }

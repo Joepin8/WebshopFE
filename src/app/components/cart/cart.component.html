@@ -2,15 +2,63 @@
   <div id="align">
     <button mat-raised-button id="backbtn" routerLink="shop" color="primary">Terug</button>
     <mat-card id="paper-card" class="mat-elevation-z8">
-      <div *ngIf="cartItems.length > 0">
-        <mat-divider></mat-divider>
-        <mat-list *ngFor="let item of cartItems">
-          <mat-list-item>
-            {{item.naam}}
+      <mat-card-title style="text-align: center">
+        Winkelwagen
+      </mat-card-title>
+      <div id="listbox" *ngIf="cart.valueOf() !== null">
+        <mat-list id="list">
+          <mat-divider></mat-divider>
+          <mat-list-item id="listItem" *ngFor="let item of cart | keyvalue ; last as last; trackBy: trackByFn">
+            <span id="links" [innerHTML]="item.value[0].naam"></span>
+            <div id="rechts">
+              <input style="width: 33px" name="item.key" type="number" [(ngModel)]="item.value[1]"
+                      (change)="checkForZero(item.key); getTotaal()">
+              <span>  &euro;{{item.value[0].prijs * item.value[1]}} </span>
+              <span *ngIf="(item.value[0].prijs*item.value[1]) % 1 === 0">.-</span>
+            </div>
+            <mat-divider *ngIf="!last"></mat-divider>
           </mat-list-item>
           <mat-divider></mat-divider>
         </mat-list>
       </div>
+      <div id="infoflex">
+        <mat-card class="mat-elevation-z4" id="gegevens">
+          <mat-card-title style="text-align: center">Gegevens</mat-card-title>
+            <mat-form-field class="full-width">
+              <mat-label>First Name</mat-label>
+              <input  matInput  placeholder="Voornaam"  name="fname" [(ngModel)]="user.voornaam">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <mat-label>Last Name</mat-label>
+              <input  matInput  placeholder="Achternaam" name="lname" [(ngModel)]="user.naam" >
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <mat-label>Postcode</mat-label>
+              <input  matInput pattern="[0-9]{4}[a-zA-Z]{2}"  placeholder="Postcode" name="postcode" [(ngModel)]="user.postcode" >
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <mat-label>Huisnummer</mat-label>
+              <input  matInput type="number" placeholder="bijv. '1'" name="huisnummer" [(ngModel)]="user.huisnummer" >
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <mat-label>Toevoeging</mat-label>
+              <input  matInput  placeholder="Toevoeging" name="toevoeging" [(ngModel)]="user.toevoeging">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <mat-label>Email</mat-label>
+              <input  matInput pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"  placeholder="Email" name="email" [(ngModel)]="user.email" >
+            </mat-form-field>
+        </mat-card>
+        <mat-card class="mat-elevation-z4" id="totaal">
+          <mat-card-title style="text-align: center">Totaal</mat-card-title>
+          <div id="totaalflex"  *ngIf="totaal !== 0">
+            <div>Subtotaal: &nbsp; &euro;<span [innerText]="totaal"></span></div>
+            <div>21% BTW: &nbsp; &euro;<span [innerText]="getBTW()"></span></div>
+            <div>Totaal: &nbsp; &nbsp; &euro;<span [innerText]="getIncl()"></span></div>
+          </div>
+        </mat-card>
+      </div>
+
     </mat-card>
   </div>
 </div>

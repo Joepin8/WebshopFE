@@ -32,7 +32,6 @@ export class ProductOmschrijvingComponent implements OnInit {
 
   }
   public koop() {
-    console.log('item toegevoegd door koop() functie', this.product);
     this.cartService.addToCarts(this.product);
   }
 

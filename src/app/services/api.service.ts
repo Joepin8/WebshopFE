@@ -68,7 +68,7 @@ export class ApiService {
   public delete<T>(path: string, queryParameters?: object): Observable<T> {
     const uri = this.createURI(path, queryParameters);
     const headers = this.createRequestHeaders();
-
+    console.log('de uri is dit geworden:' + uri);
     return this.http.delete<T>(uri, { headers });
   }
 }

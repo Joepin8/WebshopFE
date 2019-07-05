@@ -2,9 +2,9 @@
   <mat-card id="menubalk">
     <div class="flex">
       <div class="cat">
-        <button mat-button routerLink="shopping-cart">1e knop</button>
-        <button mat-button>2e knop</button>
-        <button mat-button>3e knop</button>
+        <button mat-button routerLink="shopping-cart"><mat-icon>shopping_cart</mat-icon></button>
+        <button *ngIf="authenticated" mat-icon-button (click)="geenTijd()"><mat-icon>account_box</mat-icon></button>
+
       </div>
       <div>
 
