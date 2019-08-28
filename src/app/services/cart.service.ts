@@ -22,6 +22,10 @@ export class CartService {
               private authService: AuthorizationService,
               private productService: ProductService,
               private router: Router) {
+
+  }
+
+  public getStoredCarts() {
     if (this.authService.hasAuthorization()) {
       this.api.get<Cart[]>('cart/' + this.authService.getAuthenticator().user_id, this.authService.authorized$)
         .subscribe(items => {
@@ -29,7 +33,6 @@ export class CartService {
         });
     }
   }
-
   public getCarts(): Cart[] {
     return this.storedCartItems;
   }
@@ -58,8 +61,15 @@ export class CartService {
     });
   }
 
-  public updateCarts(productId: number) {
-
+  public updateCarts(productId: number, aantal: number) {
+    if (this.authService.hasAuthorization()) {
+      this.update(new Cart(0,this.authService.getAuthenticator().user_id, productId, aantal), this.authService.getAuthenticator().user_id);
+    }
+    this.storedCartItems.forEach(cartItem => {
+      if (cartItem.productId === productId) {
+        cartItem.aantal = aantal;
+      }
+    });
   }
 
   private alreadyInCart(productId: number): boolean {
@@ -85,6 +95,15 @@ export class CartService {
     this.api.post('cart/', cartItem, this.authService.authorized$).subscribe(
       ifSuccess => {
         alert('item is in de cart-database gezet!!');
+      },
+      error => {
+        alert('Could not put to server: ' + error.message);
+      });
+  }
+  public update(cartItem: Cart, userId: number) {
+    this.api.put('cart/',  cartItem, this.authService.authorized$).subscribe(
+      ifSuccess => {
+        alert('item is ge-update');
       },
       error => {
         alert('Could not put to server: ' + error.message);

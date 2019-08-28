@@ -48,16 +48,26 @@ export class CartComponent implements OnInit {
         });
     });
   }
-  public checkForZero(id: string) {
+  public quantityChange(id: string) {
+    if (!this.checkForZero(id)) {
+      const idNumber = +id;
+      this.cartService.updateCarts(idNumber, this.cart[id][1]);
+    }
+  }
+
+  public checkForZero(id: string): boolean {
     const idNumber = +id;
     if (this.cart[id][1] < 1) {
       if (confirm('Wil je dit item verwijderen?')) {
         delete this.cart[id];
         this.cartService.deleteFromCarts(idNumber);
+        return true;
       } else {
         this.cart[idNumber] = [this.cart[id][0], 1];
+        return false;
       }
     }
+    return false;
 
   }
   public getBTW(): number {

@@ -7,6 +7,7 @@ import {ApiService} from './api.service';
 import {AuthorizationService} from './authorization.service';
 
 import {User} from '../models/user.model';
+import {CartService} from './cart.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +16,7 @@ export class UserService {
 
   constructor(private api: ApiService,
               private authService: AuthorizationService,
+              private cartService: CartService,
               private router: Router) {
 
   }
@@ -40,6 +42,7 @@ export class UserService {
     this.api.get<User>('user/login').subscribe(
       authenticator => {
         this.authService.storeAuthorization(authenticator, remember);
+        this.cartService.getStoredCarts();
         this.goToStore();
       },
       error => {
@@ -50,7 +53,6 @@ export class UserService {
 
   public logout() {
     this.authService.deleteAuthorization();
-
     this.goToLogin();
   }
 
