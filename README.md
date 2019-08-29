@@ -2,6 +2,19 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
 
+# Inloggegevens
+
+joep_oonk@hotmail.com wachtwoord
+boere.m@hsleiden.nl wachtwoord
+
+# Werkende URI's
+
+/shop - naar het begin scherm van de webshop
+/products/:id - naar de product pagina van het product met het desbetreffende id
+/user - mits ingelogd kan men hier zijn gegevens aanpassen
+/cart - hier vind men de toegevoegde producten en kan deze in hoeveelheid worden aangepast
+/login - hier kan je inloggen of een nieuw account aanmaken
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
