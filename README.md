@@ -9,11 +9,11 @@ boere.m@hsleiden.nl wachtwoord
 
 # Werkende URI's
 
-/shop - naar het begin scherm van de webshop
-/products/:id - naar de product pagina van het product met het desbetreffende id
-/user - mits ingelogd kan men hier zijn gegevens aanpassen
-/cart - hier vind men de toegevoegde producten en kan deze in hoeveelheid worden aangepast
-/login - hier kan je inloggen of een nieuw account aanmaken
+/shop - naar het begin scherm van de webshop /n
+/products/:id - naar de product pagina van het product met het desbetreffende id /n
+/user - mits ingelogd kan men hier zijn gegevens aanpassen /n
+/cart - hier vind men de toegevoegde producten en kan deze in hoeveelheid worden aangepast /n
+/login - hier kan je inloggen of een nieuw account aanmaken /n
 
 ## Development server
 
